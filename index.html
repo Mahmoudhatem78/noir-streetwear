@@ -1,631 +1,1159 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>NOIR — Streetwear</title>
-  <meta name="description" content="NOIR Streetwear — Modern streetwear designed for those who move differently.">
+<title>NOIR — Streetwear</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+<meta name="description"
+content="NOIR Streetwear — Wear different.">
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#050505;
+    color:#fff;
+    font-family:Arial, Helvetica, sans-serif;
+    overflow-x:hidden;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button{
+    font-family:inherit;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:9999;
+
+    background:rgba(5,5,5,.72);
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+nav{
+    max-width:1200px;
+    margin:auto;
+
+    padding:18px 22px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:900;
+    letter-spacing:6px;
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+
+    font-size:13px;
+    color:#aaa;
+}
+
+.nav-links a{
+    transition:.25s;
+}
+
+.nav-links a:hover{
+    color:#fff;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    padding:130px 20px 80px;
+
+    position:relative;
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            #252525 0%,
+            #0c0c0c 35%,
+            #050505 70%,
+            #000 100%
+        );
+}
+
+.hero::before{
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.04);
+
+    filter:blur(80px);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+
+    max-width:900px;
+}
+
+.badge{
+    display:inline-block;
+
+    padding:8px 16px;
+
+    border:1px solid #333;
+    border-radius:50px;
+
+    color:#aaa;
+
+    font-size:11px;
+
+    letter-spacing:3px;
+
+    margin-bottom:28px;
+}
+
+.hero h1{
+    font-size:clamp(60px,15vw,150px);
+
+    line-height:.86;
+
+    letter-spacing:-7px;
+
+    font-weight:900;
+}
+
+.hero h1 span{
+    color:#777;
+}
+
+.hero p{
+    max-width:600px;
+
+    margin:30px auto;
+
+    color:#999;
+
+    font-size:16px;
+
+    line-height:1.7;
+}
+
+.hero-button{
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:16px 30px;
+
+    background:#fff;
+
+    color:#000;
+
+    font-weight:800;
+
+    border-radius:5px;
+
+    transition:.3s;
+}
+
+.hero-button:hover{
+    transform:translateY(-4px);
+
+    background:#ddd;
+}
+
+
+/* =========================
+   GENERAL SECTIONS
+========================= */
+
+section{
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:100px 22px;
+}
+
+.section-label{
+    color:#666;
+
+    font-size:11px;
+
+    letter-spacing:4px;
+}
+
+.section-title{
+    font-size:46px;
+
+    margin-top:10px;
+
+    margin-bottom:45px;
+
+    font-weight:900;
+}
+
+
+/* =========================
+   PRODUCTS
+========================= */
+
+.products{
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:22px;
+}
+
+.product{
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #151515,
+            #090909
+        );
+
+    border:1px solid #222;
+
+    transition:
+        transform .4s ease,
+        border-color .4s ease;
+
+    isolation:isolate;
+}
+
+.product:hover{
+    transform:translateY(-8px);
+
+    border-color:#444;
+}
+
+
+/* PRODUCT IMAGE AREA */
+
+.product-image{
+    height:390px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+
+/* BACKGROUND GLOW */
+
+.product-image::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:210px;
+    height:210px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.20),
+            rgba(255,255,255,.05) 40%,
+            transparent 70%
+        );
+
+    filter:blur(15px);
+
+    opacity:.8;
+
+    animation:
+        glowPulse 3.5s ease-in-out infinite;
+
+}
+
+
+/* FLOOR SHADOW */
+
+.product-image::after{
+
+    content:"";
+
+    position:absolute;
+
+    bottom:55px;
+
+    width:45%;
+
+    height:20px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.15);
+
+    filter:blur(18px);
+
+    animation:
+        shadowPulse 3.5s ease-in-out infinite;
+
+}
+
+
+/* PRODUCT IMAGE */
+
+.product-image img{
+
+    position:relative;
+
+    z-index:5;
+
+    width:82%;
+
+    height:82%;
+
+    object-fit:contain;
+
+    filter:
+        drop-shadow(
+            0 25px 20px rgba(0,0,0,.75)
+        )
+        drop-shadow(
+            0 0 25px rgba(255,255,255,.12)
+        );
+
+    animation:
+        productFloat 4s ease-in-out infinite;
+
+    transition:
+        transform .5s ease,
+        filter .5s ease;
+}
+
+
+/* HOVER */
+
+.product:hover .product-image img{
+
+    transform:
+        translateY(-12px)
+        scale(1.07);
+
+    filter:
+        drop-shadow(
+            0 30px 25px rgba(0,0,0,.8)
+        )
+        drop-shadow(
+            0 0 35px rgba(255,255,255,.25)
+        );
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes productFloat{
+
+    0%,100%{
+        transform:
+            translateY(0px)
+            rotate(0deg);
     }
 
-    html {
-      scroll-behavior: smooth;
+    50%{
+        transform:
+            translateY(-8px)
+            rotate(.5deg);
+    }
+}
+
+@keyframes glowPulse{
+
+    0%,100%{
+        transform:scale(.85);
+
+        opacity:.55;
     }
 
-    body {
-      background: #080808;
-      color: #fff;
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.5;
+    50%{
+        transform:scale(1.18);
+
+        opacity:1;
+    }
+}
+
+@keyframes shadowPulse{
+
+    0%,100%{
+        transform:scale(.85);
+
+        opacity:.35;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
+    50%{
+        transform:scale(1);
+
+        opacity:.65;
+    }
+}
+
+
+/* =========================
+   PRODUCT INFO
+========================= */
+
+.product-info{
+
+    padding:22px;
+
+    border-top:1px solid rgba(255,255,255,.06);
+}
+
+.product-info h3{
+
+    font-size:19px;
+
+    margin-bottom:8px;
+}
+
+.product-info p{
+
+    color:#777;
+
+    font-size:13px;
+
+    margin-bottom:18px;
+}
+
+.product-bottom{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+}
+
+.price{
+
+    font-size:18px;
+
+    font-weight:900;
+}
+
+.view-product{
+
+    padding:10px 15px;
+
+    border:1px solid #333;
+
+    border-radius:4px;
+
+    font-size:12px;
+
+    transition:.25s;
+}
+
+.view-product:hover{
+
+    background:#fff;
+
+    color:#000;
+
+    border-color:#fff;
+}
+
+
+/* =========================
+   ABOUT
+========================= */
+
+.about{
+
+    text-align:center;
+
+    border-top:1px solid #1c1c1c;
+    border-bottom:1px solid #1c1c1c;
+}
+
+.about-content{
+
+    max-width:700px;
+
+    margin:auto;
+}
+
+.about h2{
+
+    font-size:45px;
+
+    margin:12px 0 25px;
+}
+
+.about p{
+
+    color:#888;
+
+    line-height:1.8;
+
+    font-size:15px;
+}
+
+
+/* =========================
+   CTA
+========================= */
+
+.cta{
+
+    text-align:center;
+}
+
+.cta h2{
+
+    font-size:45px;
+
+    margin-bottom:15px;
+}
+
+.cta p{
+
+    color:#777;
+
+    margin-bottom:30px;
+}
+
+.whatsapp-button{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    padding:16px 28px;
+
+    background:#fff;
+
+    color:#000;
+
+    border-radius:5px;
+
+    font-weight:800;
+
+    transition:.3s;
+}
+
+.whatsapp-button:hover{
+
+    transform:translateY(-4px);
+
+    background:#ddd;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+
+    border-top:1px solid #1c1c1c;
+
+    text-align:center;
+
+    padding:35px 20px;
+
+    color:#555;
+
+    font-size:12px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px){
+
+    nav{
+        padding:16px;
     }
 
-    /* NAVBAR */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      background: rgba(8, 8, 8, 0.9);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid #222;
+    .logo{
+        font-size:21px;
+        letter-spacing:5px;
     }
 
-    nav {
-      max-width: 1100px;
-      margin: auto;
-      padding: 18px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .nav-links{
+        gap:13px;
+        font-size:11px;
     }
 
-    .logo {
-      font-size: 24px;
-      font-weight: 900;
-      letter-spacing: 5px;
+    .hero{
+        padding-top:120px;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 22px;
-      font-size: 14px;
-      color: #ccc;
+    .hero h1{
+        letter-spacing:-4px;
     }
 
-    .nav-links a:hover {
-      color: #fff;
+    .hero p{
+        font-size:14px;
     }
 
-    /* HERO */
-    .hero {
-      min-height: 100vh;
-      padding: 140px 20px 70px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background:
-        radial-gradient(circle at 50% 35%, #242424 0%, #080808 48%, #000 100%);
+    section{
+        padding:75px 15px;
     }
 
-    .hero-content {
-      max-width: 850px;
+    .products{
+        grid-template-columns:1fr;
     }
 
-    .tag {
-      display: inline-block;
-      border: 1px solid #444;
-      padding: 8px 15px;
-      border-radius: 30px;
-      color: #bbb;
-      font-size: 12px;
-      letter-spacing: 2px;
-      margin-bottom: 25px;
+    .product-image{
+        height:360px;
     }
 
-    .hero h1 {
-      font-size: clamp(55px, 15vw, 130px);
-      line-height: .9;
-      letter-spacing: -5px;
-      font-weight: 900;
+    .section-title{
+        font-size:36px;
     }
 
-    .hero h1 span {
-      color: #888;
+    .about h2,
+    .cta h2{
+        font-size:34px;
     }
 
-    .hero p {
-      max-width: 600px;
-      margin: 28px auto;
-      color: #aaa;
-      font-size: 17px;
+}
+
+
+/* =========================
+   REDUCE MOTION
+========================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+
+        animation:none !important;
+
+        transition:none !important;
     }
 
-    .btn {
-      display: inline-block;
-      padding: 15px 28px;
-      background: #fff;
-      color: #000;
-      border-radius: 4px;
-      font-weight: 700;
-      transition: .25s;
-    }
+}
 
-    .btn:hover {
-      transform: translateY(-3px);
-      background: #ddd;
-    }
-
-    /* SECTIONS */
-    section {
-      max-width: 1100px;
-      margin: auto;
-      padding: 90px 20px;
-    }
-
-    .section-title {
-      margin-bottom: 35px;
-    }
-
-    .section-title small {
-      color: #777;
-      letter-spacing: 3px;
-      font-size: 11px;
-    }
-
-    .section-title h2 {
-      font-size: 42px;
-      margin-top: 8px;
-    }
-
-    /* PRODUCTS */
-    .products {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-    }
-
-    .product {
-      background: #111;
-      border: 1px solid #222;
-      border-radius: 10px;
-      overflow: hidden;
-      transition: .3s;
-    }
-
-    .product:hover {
-      transform: translateY(-5px);
-      border-color: #444;
-    }
-
-    .product-img {
-      height: 300px;
-      background: radial-gradient(circle, #1d1d1d 0%, #090909 70%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Floating shadow */
-    .product-img::after {
-      content: "";
-      position: absolute;
-      bottom: 28px;
-      width: 55%;
-      height: 18px;
-      background: rgba(255,255,255,.12);
-      filter: blur(15px);
-      border-radius: 50%;
-    }
-
-    /* Product image */
-    .product-img img {
-      width: 82%;
-      height: 82%;
-      object-fit: contain;
-      position: relative;
-      z-index: 2;
-      transition: transform .4s ease;
-      filter: drop-shadow(0 25px 18px rgba(0,0,0,.65));
-    }
-
-    .product:hover .product-img img {
-      transform: translateY(-8px) scale(1.04);
-    }
-
-    /* Temporary product placeholder */
-    .placeholder {
-      font-size: 55px;
-      color: #444;
-      font-weight: 900;
-      letter-spacing: 3px;
-    }
-
-    .product-info {
-      padding: 18px;
-    }
-
-    .product-info h3 {
-      font-size: 17px;
-      margin-bottom: 7px;
-    }
-
-    .product-info p {
-      color: #777;
-      font-size: 13px;
-      margin-bottom: 15px;
-    }
-
-    .price {
-      font-weight: 800;
-      font-size: 17px;
-    }
-
-    /* ABOUT */
-    .about {
-      border-top: 1px solid #222;
-      border-bottom: 1px solid #222;
-      text-align: center;
-    }
-
-    .about p {
-      max-width: 700px;
-      margin: auto;
-      color: #999;
-      font-size: 16px;
-    }
-
-    /* CTA */
-    .cta {
-      text-align: center;
-      padding-bottom: 110px;
-    }
-
-    .cta h2 {
-      font-size: 40px;
-      margin-bottom: 15px;
-    }
-
-    .cta p {
-      color: #888;
-      margin-bottom: 28px;
-    }
-
-    /* FOOTER */
-    footer {
-      border-top: 1px solid #222;
-      text-align: center;
-      padding: 30px 20px;
-      color: #666;
-      font-size: 13px;
-    }
-
-    /* MOBILE */
-    @media (max-width: 600px) {
-
-      .nav-links {
-        gap: 12px;
-        font-size: 12px;
-      }
-
-      .hero h1 {
-        letter-spacing: -3px;
-      }
-
-      .hero p {
-        font-size: 15px;
-      }
-
-      section {
-        padding: 70px 15px;
-      }
-
-      .products {
-        grid-template-columns: 1fr;
-      }
-
-      .product-img {
-        height: 330px;
-      }
-
-      .section-title h2 {
-        font-size: 34px;
-      }
-
-      .cta h2 {
-        font-size: 32px;
-      }
-    }
-  </style>
+</style>
 </head>
+
 
 <body>
 
-  <!-- NAVBAR -->
-  <header>
-    <nav>
 
-      <a href="#" class="logo">NOIR</a>
+<!-- =========================
+     NAVBAR
+========================= -->
 
-      <div class="nav-links">
-        <a href="#shop">Shop</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </div>
+<header>
 
-    </nav>
-  </header>
+<nav>
 
+<a href="#" class="logo">
+NOIR
+</a>
 
-  <main>
+<div class="nav-links">
 
-    <!-- HERO -->
-    <section class="hero">
+<a href="#shop">
+SHOP
+</a>
 
-      <div class="hero-content">
+<a href="#about">
+ABOUT
+</a>
 
-        <div class="tag">
-          NEW COLLECTION · 2026
-        </div>
+<a href="#contact">
+CONTACT
+</a>
 
-        <h1>
-          WEAR<br>
-          <span>DIFFERENT.</span>
-        </h1>
+</div>
 
-        <p>
-          Modern streetwear for people who don't follow the crowd.
-          Built for the streets. Designed for you.
-        </p>
+</nav>
 
-        <a href="#shop" class="btn">
-          EXPLORE COLLECTION
-        </a>
+</header>
 
-      </div>
 
-    </section>
 
+<!-- =========================
+     HERO
+========================= -->
 
-    <!-- SHOP -->
-    <section id="shop">
+<section class="hero">
 
-      <div class="section-title">
+<div class="hero-content">
 
-        <small>01 / COLLECTION</small>
+<div class="badge">
+NEW COLLECTION · 2026
+</div>
 
-        <h2>
-          Latest Drops
-        </h2>
+<h1>
 
-      </div>
+WEAR<br>
 
+<span>DIFFERENT.</span>
 
-      <div class="products">
+</h1>
 
+<p>
 
-        <!-- PRODUCT 1 -->
-        <article class="product">
+Modern streetwear for people who don't follow the crowd.
+Built for the streets. Designed for you.
 
-          <div class="product-img">
+</p>
 
-            <img
-              src="Picsart_26-10-08_17-31-53-170.png"
-              alt="NOIR Oversized Black T-Shirt">
+<a
+href="#shop"
+class="hero-button">
 
-          </div>
+EXPLORE COLLECTION
 
-          <div class="product-info">
+</a>
 
-            <h3>
-              Oversized Black Tee
-            </h3>
+</div>
 
-            <p>
-              Heavy cotton · Oversized fit
-            </p>
+</section>
 
-            <div class="price">
-              450 EGP
-            </div>
 
-          </div>
 
-        </article>
+<!-- =========================
+     SHOP
+========================= -->
 
+<section id="shop">
 
+<div class="section-label">
+01 / COLLECTION
+</div>
 
-        <!-- PRODUCT 2 -->
-        <article class="product">
+<h2 class="section-title">
+LATEST DROPS
+</h2>
 
-          <div class="product-img">
 
-            <div class="placeholder">
-              02
-            </div>
+<div class="products">
 
-          </div>
 
-          <div class="product-info">
 
-            <h3>
-              Essential White Tee
-            </h3>
+<!-- PRODUCT 1 -->
 
-            <p>
-              Premium cotton · Relaxed fit
-            </p>
+<article class="product">
 
-            <div class="price">
-              450 EGP
-            </div>
+<div class="product-image">
 
-          </div>
+<img
+src="Picsart_26-10-08_17-31-53-170.png"
+alt="NOIR Oversized Black Tee">
 
-        </article>
+</div>
 
+<div class="product-info">
 
+<h3>
+Oversized Black Tee
+</h3>
 
-        <!-- PRODUCT 3 -->
-        <article class="product">
+<p>
+Heavy cotton · Oversized fit
+</p>
 
-          <div class="product-img">
+<div class="product-bottom">
 
-            <div class="placeholder">
-              03
-            </div>
+<span class="price">
+450 EGP
+</span>
 
-          </div>
+<a
+href="#contact"
+class="view-product">
 
-          <div class="product-info">
+VIEW
 
-            <h3>
-              NOIR Graphic Tee
-            </h3>
+</a>
 
-            <p>
-              Limited graphic · Street fit
-            </p>
+</div>
 
-            <div class="price">
-              500 EGP
-            </div>
+</div>
 
-          </div>
+</article>
 
-        </article>
 
 
+<!-- PRODUCT 2 -->
 
-        <!-- PRODUCT 4 -->
-        <article class="product">
+<article class="product">
 
-          <div class="product-img">
+<div class="product-image">
 
-            <div class="placeholder">
-              04
-            </div>
+<img
+src="PUT-YOUR-WHITE-TEE-LINK-HERE"
+alt="NOIR Essential White Tee">
 
-          </div>
+</div>
 
-          <div class="product-info">
+<div class="product-info">
 
-            <h3>
-              Essential Hoodie
-            </h3>
+<h3>
+Essential White Tee
+</h3>
 
-            <p>
-              Heavyweight cotton · Oversized
-            </p>
+<p>
+Premium cotton · Relaxed fit
+</p>
 
-            <div class="price">
-              850 EGP
-            </div>
+<div class="product-bottom">
 
-          </div>
+<span class="price">
+450 EGP
+</span>
 
-        </article>
+<a
+href="#contact"
+class="view-product">
 
+VIEW
 
+</a>
 
-        <!-- PRODUCT 5 -->
-        <article class="product">
+</div>
 
-          <div class="product-img">
+</div>
 
-            <div class="placeholder">
-              05
-            </div>
+</article>
 
-          </div>
 
-          <div class="product-info">
 
-            <h3>
-              Cargo Pants
-            </h3>
+<!-- PRODUCT 3 -->
 
-            <p>
-              Relaxed fit · Utility pockets
-            </p>
+<article class="product">
 
-            <div class="price">
-              750 EGP
-            </div>
+<div class="product-image">
 
-          </div>
+<img
+src="PUT-YOUR-GRAPHIC-TEE-LINK-HERE"
+alt="NOIR Graphic Tee">
 
-        </article>
+</div>
 
+<div class="product-info">
 
+<h3>
+NOIR Graphic Tee
+</h3>
 
-        <!-- PRODUCT 6 -->
-        <article class="product">
+<p>
+Limited graphic · Street fit
+</p>
 
-          <div class="product-img">
+<div class="product-bottom">
 
-            <div class="placeholder">
-              06
-            </div>
+<span class="price">
+500 EGP
+</span>
 
-          </div>
+<a
+href="#contact"
+class="view-product">
 
-          <div class="product-info">
+VIEW
 
-            <h3>
-              Streetwear Jacket
-            </h3>
+</a>
 
-            <p>
-              Modern cut · Limited edition
-            </p>
+</div>
 
-            <div class="price">
-              1,100 EGP
-            </div>
+</div>
 
-          </div>
+</article>
 
-        </article>
 
 
-      </div>
+<!-- PRODUCT 4 -->
 
-    </section>
+<article class="product">
 
+<div class="product-image">
 
-    <!-- ABOUT -->
-    <section class="about" id="about">
+<img
+src="PUT-YOUR-HOODIE-LINK-HERE"
+alt="NOIR Essential Hoodie">
 
-      <div class="section-title">
+</div>
 
-        <small>
-          02 / THE BRAND
-        </small>
+<div class="product-info">
 
-        <h2>
-          Made To Stand Out.
-        </h2>
+<h3>
+Essential Hoodie
+</h3>
 
-      </div>
+<p>
+Heavyweight cotton · Oversized
+</p>
 
-      <p>
-        NOIR is a modern streetwear concept built around simplicity,
-        confidence and individuality.
-        No rules. No noise. Just your style.
-      </p>
+<div class="product-bottom">
 
-    </section>
+<span class="price">
+850 EGP
+</span>
 
+<a
+href="#contact"
+class="view-product">
 
+VIEW
 
-    <!-- CONTACT -->
-    <section class="cta" id="contact">
+</a>
 
-      <h2>
-        Ready to stand out?
-      </h2>
+</div>
 
-      <p>
-        Discover the latest NOIR collection.
-      </p>
+</div>
 
-      <a
-        href="https://wa.me/201023708424"
-        class="btn"
-        target="_blank">
+</article>
 
-        ORDER ON WHATSAPP
 
-      </a>
 
-    </section>
+<!-- PRODUCT 5 -->
 
-  </main>
+<article class="product">
 
+<div class="product-image">
 
+<img
+src="PUT-YOUR-CARGO-LINK-HERE"
+alt="NOIR Cargo Pants">
 
-  <!-- FOOTER -->
-  <footer>
+</div>
 
-    © 2026 NOIR Streetwear.
-    All rights reserved.
+<div class="product-info">
 
-  </footer>
+<h3>
+Cargo Pants
+</h3>
+
+<p>
+Relaxed fit · Utility pockets
+</p>
+
+<div class="product-bottom">
+
+<span class="price">
+750 EGP
+</span>
+
+<a
+href="#contact"
+class="view-product">
+
+VIEW
+
+</a>
+
+</div>
+
+</div>
+
+</article>
+
+
+
+<!-- PRODUCT 6 -->
+
+<article class="product">
+
+<div class="product-image">
+
+<img
+src="PUT-YOUR-JACKET-LINK-HERE"
+alt="NOIR Streetwear Jacket">
+
+</div>
+
+<div class="product-info">
+
+<h3>
+Streetwear Jacket
+</h3>
+
+<p>
+Modern cut · Limited edition
+</p>
+
+<div class="product-bottom">
+
+<span class="price">
+1,100 EGP
+</span>
+
+<a
+href="#contact"
+class="view-product">
+
+VIEW
+
+</a>
+
+</div>
+
+</div>
+
+</article>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section
+class="about"
+id="about">
+
+<div class="about-content">
+
+<div class="section-label">
+02 / THE BRAND
+</div>
+
+<h2>
+MADE TO STAND OUT.
+</h2>
+
+<p>
+
+NOIR is a modern streetwear concept built around
+simplicity, confidence and individuality.
+
+No rules.
+No noise.
+Just your style.
+
+</p>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section
+class="cta"
+id="contact">
+
+<div class="section-label">
+03 / ORDER
+</div>
+
+<h2>
+READY TO STAND OUT?
+</h2>
+
+<p>
+Order your favorite NOIR piece directly.
+</p>
+
+<a
+href="https://wa.me/201023708424"
+target="_blank"
+class="whatsapp-button">
+
+ORDER ON WHATSAPP
+
+</a>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+© 2026 NOIR Streetwear.
+All rights reserved.
+
+</footer>
+
 
 </body>
 </html>
