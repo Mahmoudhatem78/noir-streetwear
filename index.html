@@ -160,7 +160,7 @@
     .product {
       background: #111;
       border: 1px solid #222;
-      border-radius: 8px;
+      border-radius: 10px;
       overflow: hidden;
       transition: .3s;
     }
@@ -171,13 +171,48 @@
     }
 
     .product-img {
-      height: 260px;
-      background: linear-gradient(135deg, #292929, #0d0d0d);
+      height: 300px;
+      background: radial-gradient(circle, #1d1d1d 0%, #090909 70%);
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Floating shadow */
+    .product-img::after {
+      content: "";
+      position: absolute;
+      bottom: 28px;
+      width: 55%;
+      height: 18px;
+      background: rgba(255,255,255,.12);
+      filter: blur(15px);
+      border-radius: 50%;
+    }
+
+    /* Product image */
+    .product-img img {
+      width: 82%;
+      height: 82%;
+      object-fit: contain;
+      position: relative;
+      z-index: 2;
+      transition: transform .4s ease;
+      filter: drop-shadow(0 25px 18px rgba(0,0,0,.65));
+    }
+
+    .product:hover .product-img img {
+      transform: translateY(-8px) scale(1.04);
+    }
+
+    /* Temporary product placeholder */
+    .placeholder {
       font-size: 55px;
-      color: #555;
+      color: #444;
+      font-weight: 900;
+      letter-spacing: 3px;
     }
 
     .product-info {
@@ -241,6 +276,7 @@
 
     /* MOBILE */
     @media (max-width: 600px) {
+
       .nav-links {
         gap: 12px;
         font-size: 12px;
@@ -263,7 +299,7 @@
       }
 
       .product-img {
-        height: 300px;
+        height: 330px;
       }
 
       .section-title h2 {
@@ -279,8 +315,10 @@
 
 <body>
 
+  <!-- NAVBAR -->
   <header>
     <nav>
+
       <a href="#" class="logo">NOIR</a>
 
       <div class="nav-links">
@@ -288,6 +326,7 @@
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </div>
+
     </nav>
   </header>
 
@@ -296,9 +335,12 @@
 
     <!-- HERO -->
     <section class="hero">
+
       <div class="hero-content">
 
-        <div class="tag">NEW COLLECTION · 2026</div>
+        <div class="tag">
+          NEW COLLECTION · 2026
+        </div>
 
         <h1>
           WEAR<br>
@@ -310,9 +352,12 @@
           Built for the streets. Designed for you.
         </p>
 
-        <a href="#shop" class="btn">EXPLORE COLLECTION</a>
+        <a href="#shop" class="btn">
+          EXPLORE COLLECTION
+        </a>
 
       </div>
+
     </section>
 
 
@@ -320,76 +365,203 @@
     <section id="shop">
 
       <div class="section-title">
+
         <small>01 / COLLECTION</small>
-        <h2>Latest Drops</h2>
+
+        <h2>
+          Latest Drops
+        </h2>
+
       </div>
+
 
       <div class="products">
 
+
+        <!-- PRODUCT 1 -->
         <article class="product">
-          <div class="product-img">01</div>
+
+          <div class="product-img">
+
+            <img
+              src="tee-black.png"
+              alt="NOIR Oversized Black T-Shirt">
+
+          </div>
 
           <div class="product-info">
-            <h3>Oversized Black Tee</h3>
-            <p>Heavy cotton · Oversized fit</p>
-            <div class="price">450 EGP</div>
+
+            <h3>
+              Oversized Black Tee
+            </h3>
+
+            <p>
+              Heavy cotton · Oversized fit
+            </p>
+
+            <div class="price">
+              450 EGP
+            </div>
+
           </div>
+
         </article>
 
 
+
+        <!-- PRODUCT 2 -->
         <article class="product">
-          <div class="product-img">02</div>
+
+          <div class="product-img">
+
+            <div class="placeholder">
+              02
+            </div>
+
+          </div>
 
           <div class="product-info">
-            <h3>Essential White Tee</h3>
-            <p>Premium cotton · Relaxed fit</p>
-            <div class="price">450 EGP</div>
+
+            <h3>
+              Essential White Tee
+            </h3>
+
+            <p>
+              Premium cotton · Relaxed fit
+            </p>
+
+            <div class="price">
+              450 EGP
+            </div>
+
           </div>
+
         </article>
 
 
+
+        <!-- PRODUCT 3 -->
         <article class="product">
-          <div class="product-img">03</div>
+
+          <div class="product-img">
+
+            <div class="placeholder">
+              03
+            </div>
+
+          </div>
 
           <div class="product-info">
-            <h3>NOIR Graphic Tee</h3>
-            <p>Limited graphic · Street fit</p>
-            <div class="price">500 EGP</div>
+
+            <h3>
+              NOIR Graphic Tee
+            </h3>
+
+            <p>
+              Limited graphic · Street fit
+            </p>
+
+            <div class="price">
+              500 EGP
+            </div>
+
           </div>
+
         </article>
 
 
+
+        <!-- PRODUCT 4 -->
         <article class="product">
-          <div class="product-img">04</div>
+
+          <div class="product-img">
+
+            <div class="placeholder">
+              04
+            </div>
+
+          </div>
 
           <div class="product-info">
-            <h3>Essential Hoodie</h3>
-            <p>Heavyweight cotton · Oversized</p>
-            <div class="price">850 EGP</div>
+
+            <h3>
+              Essential Hoodie
+            </h3>
+
+            <p>
+              Heavyweight cotton · Oversized
+            </p>
+
+            <div class="price">
+              850 EGP
+            </div>
+
           </div>
+
         </article>
 
 
+
+        <!-- PRODUCT 5 -->
         <article class="product">
-          <div class="product-img">05</div>
+
+          <div class="product-img">
+
+            <div class="placeholder">
+              05
+            </div>
+
+          </div>
 
           <div class="product-info">
-            <h3>Cargo Pants</h3>
-            <p>Relaxed fit · Utility pockets</p>
-            <div class="price">750 EGP</div>
+
+            <h3>
+              Cargo Pants
+            </h3>
+
+            <p>
+              Relaxed fit · Utility pockets
+            </p>
+
+            <div class="price">
+              750 EGP
+            </div>
+
           </div>
+
         </article>
 
 
+
+        <!-- PRODUCT 6 -->
         <article class="product">
-          <div class="product-img">06</div>
+
+          <div class="product-img">
+
+            <div class="placeholder">
+              06
+            </div>
+
+          </div>
 
           <div class="product-info">
-            <h3>Streetwear Jacket</h3>
-            <p>Modern cut · Limited edition</p>
-            <div class="price">1,100 EGP</div>
+
+            <h3>
+              Streetwear Jacket
+            </h3>
+
+            <p>
+              Modern cut · Limited edition
+            </p>
+
+            <div class="price">
+              1,100 EGP
+            </div>
+
           </div>
+
         </article>
+
 
       </div>
 
@@ -400,22 +572,33 @@
     <section class="about" id="about">
 
       <div class="section-title">
-        <small>02 / THE BRAND</small>
-        <h2>Made To Stand Out.</h2>
+
+        <small>
+          02 / THE BRAND
+        </small>
+
+        <h2>
+          Made To Stand Out.
+        </h2>
+
       </div>
 
       <p>
         NOIR is a modern streetwear concept built around simplicity,
-        confidence and individuality. No rules. No noise. Just your style.
+        confidence and individuality.
+        No rules. No noise. Just your style.
       </p>
 
     </section>
 
 
-    <!-- CTA -->
+
+    <!-- CONTACT -->
     <section class="cta" id="contact">
 
-      <h2>Ready to stand out?</h2>
+      <h2>
+        Ready to stand out?
+      </h2>
 
       <p>
         Discover the latest NOIR collection.
@@ -425,7 +608,9 @@
         href="https://wa.me/201000000000"
         class="btn"
         target="_blank">
+
         ORDER ON WHATSAPP
+
       </a>
 
     </section>
@@ -433,9 +618,14 @@
   </main>
 
 
+
+  <!-- FOOTER -->
   <footer>
-    © 2026 NOIR Streetwear. All rights reserved.
+
+    © 2026 NOIR Streetwear.
+    All rights reserved.
+
   </footer>
 
 </body>
-                                                        </html>
+</html>
