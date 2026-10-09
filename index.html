@@ -4,193 +4,307 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MONTFORT — Beyond The Ordinary</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+<title>NOIR — Above The Ordinary</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
-:root{--white:#f7f5f0;--muted:#c9c8c1}
+:root{--black:#111214;--white:#fff;--blue:#dcebf4;--muted:#66717b}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:#111;color:var(--white);font-family:'DM Sans',sans-serif;overflow-x:hidden}
-a{color:inherit;text-decoration:none}
-.loader{position:fixed;inset:0;background:#111;z-index:1000;display:grid;place-items:center;animation:loaderOut 1s 1.2s forwards}
-.loader span{font-size:11px;letter-spacing:7px;animation:pulse 1s infinite alternate}
-@keyframes loaderOut{to{opacity:0;visibility:hidden;pointer-events:none}}
-@keyframes pulse{to{opacity:.3}}
-nav{position:fixed;top:0;left:0;width:100%;padding:28px 6%;display:flex;justify-content:space-between;align-items:center;z-index:20;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;mix-blend-mode:difference}
-.logo{font-size:14px;letter-spacing:5px;font-weight:500}
-.navlinks{display:flex;gap:32px}
-.menu{display:none}
-.scene{position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#242b30}
-.scene-bg{position:absolute;inset:-5%;background-size:cover;background-position:center;transform:scale(1.04);transition:transform 1.2s ease,filter 1s ease}
-.scene::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.24),transparent 35%,rgba(0,0,0,.42));z-index:1}
-.scene-content{position:relative;z-index:2;text-align:center;padding:25px;max-width:850px;opacity:0;transform:translateY(35px);transition:opacity 1.2s ease,transform 1.2s ease}
-.scene.active .scene-content{opacity:1;transform:translateY(0)}
-.scene.active .scene-bg{transform:scale(1)}
-.eyebrow{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:#e2ded5;margin-bottom:28px}
-h1,h2{font-family:'Playfair Display',serif;font-weight:400;line-height:1.12}
-h1{font-size:clamp(45px,8vw,104px);letter-spacing:-2px}
-h2{font-size:clamp(38px,6vw,75px)}
-.description{max-width:420px;margin:24px auto 0;font-size:12px;line-height:2;color:#e4e1da;font-weight:300}
-.cta{display:inline-flex;align-items:center;gap:22px;margin-top:35px;padding:15px 21px;border:1px solid rgba(255,255,255,.65);font-size:9px;letter-spacing:2px;text-transform:uppercase;transition:.35s}
-.cta:hover{background:white;color:#111;gap:32px}
-.side-label{position:absolute;z-index:3;left:6%;bottom:40px;font-size:9px;letter-spacing:3px;writing-mode:vertical-rl;transform:rotate(180deg);color:#eee}
-.scroll-note{position:absolute;z-index:3;bottom:36px;left:50%;transform:translateX(-50%);font-size:8px;letter-spacing:3px;text-transform:uppercase;display:flex;align-items:center;gap:12px}
-.scroll-note:after{content:"";height:35px;width:1px;background:#fff;position:absolute;top:22px;left:50%;animation:lineMove 1.6s infinite}
-@keyframes lineMove{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}100%{transform:scaleY(0);transform-origin:bottom}}
-.scene-number{position:absolute;z-index:3;right:6%;bottom:38px;font-size:10px;letter-spacing:3px;color:#eee}
-#mountain .scene-bg{background-image:url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2200&q=90')}
-#clouds .scene-bg{background-image:url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=2200&q=90')}
-#ocean .scene-bg{background-image:url('https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=2200&q=90')}
-#forest .scene-bg{background-image:url('https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=2200&q=90')}
-#mountain .scene-bg{background-position:center 42%}
-#clouds .scene-bg{filter:saturate(.65)}
-#ocean .scene-bg{filter:saturate(.8)}
-#forest .scene-bg{filter:saturate(.75)}
-.marquee{background:#e8e5dc;color:#1b201e;padding:24px 0;overflow:hidden;white-space:nowrap}
-.marquee-track{display:inline-flex;gap:45px;animation:marquee 25s linear infinite;font-family:'Playfair Display',serif;font-size:24px}
-.marquee-track span{display:inline-flex;gap:45px;align-items:center}
-.marquee-track i{font-style:normal;font-family:sans-serif;font-size:13px}
+body{font-family:'DM Sans',sans-serif;color:var(--black);background:#e8f2f8;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button{font:inherit}
+.loader{position:fixed;inset:0;z-index:1000;background:#e6f1f8;display:grid;place-items:center;animation:hideLoader 1s 1.1s forwards}
+.loader span{font-size:13px;letter-spacing:9px;font-weight:600;animation:fade 1s infinite alternate}
+@keyframes hideLoader{to{opacity:0;visibility:hidden}}
+@keyframes fade{to{opacity:.3}}
+nav{position:fixed;top:0;left:0;width:100%;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:24px 6%;background:rgba(239,247,251,.48);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.45)}
+.logo{font-size:24px;letter-spacing:7px;font-weight:700}
+.logo span{font-weight:300}
+.navlinks{display:flex;align-items:center;gap:30px;font-size:10px;letter-spacing:2px;text-transform:uppercase}
+.navlinks a{position:relative}
+.navlinks a:after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:1px;background:#111;transition:.3s}
+.navlinks a:hover:after{width:100%}
+.cart{border:1px solid #222;padding:10px 14px;font-size:10px;letter-spacing:1px;background:transparent;cursor:pointer;transition:.3s}
+.cart:hover{background:#111;color:white}
+.hero{height:100svh;min-height:650px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;background:linear-gradient(#c5dfef 0%,#edf6fb 48%,#c8dce9 100%)}
+.sky{position:absolute;inset:-8%;background-image:url('https://images.unsplash.com/photo-1499346030926-9a72daac6c63?auto=format&fit=crop&w=2200&q=90');background-size:cover;background-position:center;opacity:.7;transform:scale(1.05);animation:skyDrift 22s ease-in-out infinite alternate}
+@keyframes skyDrift{to{transform:scale(1.15) translate3d(-1%,1%,0)}}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(240,248,252,.12),rgba(224,239,248,.2) 60%,#dceaf2)}
+.hero-content{position:relative;z-index:3;text-align:center;padding:30px;max-width:950px;animation:heroEnter 1.4s .2s both}
+@keyframes heroEnter{from{opacity:0;transform:translateY(45px)}to{opacity:1;transform:translateY(0)}}
+.eyebrow{font-size:9px;letter-spacing:5px;text-transform:uppercase;margin-bottom:25px}
+.hero h1{font-size:clamp(62px,12vw,145px);letter-spacing:-7px;line-height:.85;font-weight:600}
+.hero h1 em{font-family:'Playfair Display',serif;font-weight:400}
+.hero-desc{max-width:400px;margin:30px auto 0;color:#37434d;font-size:12px;line-height:2}
+.primary-btn{display:inline-flex;align-items:center;gap:30px;background:#111;color:white;padding:17px 23px;margin-top:32px;font-size:9px;letter-spacing:2px;text-transform:uppercase;transition:.35s}
+.primary-btn:hover{background:#374e60;gap:43px;transform:translateY(-3px)}
+.hero-tag{position:absolute;z-index:4;bottom:38px;left:6%;font-size:9px;letter-spacing:3px}
+.hero-count{position:absolute;z-index:4;bottom:38px;right:6%;font-size:9px;letter-spacing:3px}
+.hero-scroll{position:absolute;bottom:35px;left:50%;transform:translateX(-50%);font-size:8px;letter-spacing:3px;z-index:4}
+.hero-scroll:after{content:"";position:absolute;top:24px;left:50%;height:35px;width:1px;background:#222;animation:scrollLine 1.5s infinite}
+@keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}100%{transform:scaleY(0);transform-origin:bottom}}
+.ticker{background:#111;color:#fff;padding:20px 0;overflow:hidden;white-space:nowrap}
+.ticker-track{display:flex;width:max-content;animation:marquee 26s linear infinite}
+.ticker span{font-family:'Playfair Display',serif;font-size:20px;letter-spacing:2px;padding-right:38px}
 @keyframes marquee{to{transform:translateX(-50%)}}
-footer{background:#101210;padding:80px 7% 30px;text-align:center}
-.footer-title{font-family:'Playfair Display',serif;font-size:clamp(36px,6vw,70px);font-weight:400}
-footer p{font-size:10px;letter-spacing:2px;color:#aaa;margin-top:20px}
-.footer-bottom{display:flex;justify-content:space-between;gap:15px;margin-top:75px;padding-top:20px;border-top:1px solid #333;font-size:9px;letter-spacing:1.5px;color:#aaa}
-@media(max-width:650px){
- nav{padding:23px 6%}.navlinks{gap:13px;font-size:8px;letter-spacing:1px}.logo{font-size:12px;letter-spacing:3px}
- .scene{min-height:100svh}.scene-content{padding:22px}
- .eyebrow{font-size:8px;letter-spacing:3px;margin-bottom:22px}
- h1{font-size:clamp(43px,12vw,67px);letter-spacing:-1px}
- .description{font-size:11px;max-width:300px}
- .side-label{left:5%;bottom:35px;font-size:8px}
- .scene-number{right:5%;bottom:35px}
- .scroll-note{bottom:32px;font-size:7px}
- .marquee-track{font-size:19px}
- footer{padding:60px 6% 25px}
- .footer-bottom{margin-top:50px;font-size:8px}
+.intro{position:relative;overflow:hidden;text-align:center;padding:130px 25px 100px;background:linear-gradient(180deg,#dceaf2,#f7f8f7)}
+.section-label{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:#657480;margin-bottom:22px}
+.intro h2,.section-heading h2,.story h2,.final h2{font-family:'Playfair Display',serif;font-weight:400;font-size:clamp(42px,7vw,85px);line-height:1.05;letter-spacing:-2px}
+.intro p{max-width:450px;margin:22px auto 0;font-size:12px;line-height:2;color:#66717b}
+.cloud-decor{position:absolute;width:330px;height:180px;border-radius:50%;background:rgba(255,255,255,.45);filter:blur(45px);pointer-events:none}
+.cloud-left{left:-150px;top:20%}.cloud-right{right:-140px;bottom:0}
+.shop{padding:100px 6% 125px;background:linear-gradient(180deg,#f7f8f7,#e5eff5);position:relative;overflow:hidden}
+.section-heading{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:45px}
+.section-heading h2{font-size:clamp(42px,6vw,70px)}
+.section-heading p{font-size:10px;letter-spacing:1px;color:#68747e;line-height:1.8}
+.products{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.product{min-width:0;opacity:0;transform:translateY(50px);transition:opacity .8s,transform .8s}
+.product.visible{opacity:1;transform:translateY(0)}
+.product-image{position:relative;aspect-ratio:4/5;overflow:hidden;background:#d8e1e7;isolation:isolate}
+.product-image img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .9s cubic-bezier(.2,.7,.2,1),filter .5s}
+.product:hover .product-image img{transform:scale(1.07);filter:contrast(1.04)}
+.product:nth-child(even){margin-top:55px}
+.product-tag{position:absolute;left:13px;top:13px;background:rgba(255,255,255,.88);padding:9px 11px;font-size:8px;letter-spacing:1.5px;text-transform:uppercase}
+.add-btn{position:absolute;bottom:12px;left:12px;right:12px;border:0;background:rgba(255,255,255,.94);padding:15px;font-size:9px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transform:translateY(70px);transition:transform .4s,background .3s}
+.product:hover .add-btn{transform:translateY(0)}
+.add-btn:hover{background:#111;color:#fff}
+.product-info{display:flex;justify-content:space-between;gap:10px;padding:17px 1px 0}
+.product-name{font-size:11px;font-weight:600;letter-spacing:.6px}
+.product-type{font-size:9px;color:#74808a;margin-top:7px}
+.price{font-size:11px;white-space:nowrap}
+.shop-note{margin-top:50px;text-align:center;font-size:9px;letter-spacing:3px;color:#677681}
+.story{min-height:85vh;display:grid;grid-template-columns:1fr 1fr;background:#d9e8f1;overflow:hidden}
+.story-image{min-height:540px;position:relative;overflow:hidden}
+.story-image img{position:absolute;width:100%;height:110%;top:-5%;object-fit:cover;transition:transform 1.2s}
+.story-image:hover img{transform:scale(1.04)}
+.story-copy{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:9%}
+.story h2{font-size:clamp(43px,5vw,73px)}
+.story-copy>p:not(.section-label){max-width:360px;font-size:12px;line-height:2;color:#586975;margin-top:24px}
+.story .primary-btn{margin-top:27px}
+.final{position:relative;min-height:75vh;display:grid;place-items:center;text-align:center;overflow:hidden;background:#d5e8f4;padding:90px 25px}
+.final-bg{position:absolute;inset:-5%;background:url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=2000&q=90') center/cover;opacity:.5;transition:transform 1.5s}
+.final-content{position:relative;z-index:2}
+.final h2{font-size:clamp(47px,8vw,95px)}
+.final p:not(.section-label){font-size:11px;line-height:2;color:#435460;margin-top:22px}
+footer{background:#111;color:#f5f5f3;padding:55px 6% 25px}
+.footer-top{display:flex;justify-content:space-between;align-items:center;gap:20px}
+.footer-logo{font-size:23px;letter-spacing:7px}
+.footer-top p{font-size:9px;letter-spacing:2px;color:#aaa}
+.footer-bottom{display:flex;justify-content:space-between;gap:15px;margin-top:55px;padding-top:20px;border-top:1px solid #393939;font-size:8px;letter-spacing:1.5px;color:#aaa}
+.cart-toast{position:fixed;bottom:22px;right:22px;background:#111;color:#fff;padding:16px 22px;font-size:11px;z-index:100;opacity:0;transform:translateY(15px);pointer-events:none;transition:.3s}
+.cart-toast.show{opacity:1;transform:translateY(0)}
+@media(max-width:760px){
+ nav{padding:18px 5%}.logo{font-size:19px;letter-spacing:5px}
+ .navlinks{gap:13px;font-size:8px;letter-spacing:.7px}.cart{padding:8px}
+ .hero{min-height:620px}.hero h1{letter-spacing:-3px;font-size:clamp(58px,15vw,100px)}
+ .hero-desc{font-size:11px}.eyebrow{letter-spacing:3px}
+ .hero-scroll{display:none}.hero-tag,.hero-count{font-size:8px;bottom:24px}
+ .intro{padding:90px 22px 75px}
+ .shop{padding:75px 5% 85px}.section-heading{display:block}.section-heading p{margin-top:14px}
+ .products{grid-template-columns:repeat(2,minmax(0,1fr));gap:25px 13px}
+ .product:nth-child(even){margin-top:25px}.product-image{aspect-ratio:3/4}
+ .add-btn{transform:translateY(0);padding:12px 5px;font-size:8px}
+ .product-name,.price{font-size:10px}.product-type{font-size:8px}
+ .story{grid-template-columns:1fr}.story-image{min-height:470px}
+ .story-copy{padding:65px 7% 75px}.final{min-height:60vh}
+ .footer-top{align-items:flex-start;flex-direction:column}.footer-bottom{font-size:7px;flex-wrap:wrap}
 }
-@media(prefers-reduced-motion:reduce){
- *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
-}
+@media(hover:none){.add-btn{transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
 
-<div class="loader"><span>M O N T F O R T</span></div>
+<div class="loader"><span>NOIR</span></div>
 
 <nav>
-  <a class="logo" href="#mountain">MONTFORT</a>
+  <a href="#home" class="logo">N<span>OIR</span></a>
   <div class="navlinks">
-    <a href="#mountain">Home</a>
-    <a href="#clouds">Explore</a>
-    <a href="#forest">Our Vision</a>
+    <a href="#home">Home</a>
+    <a href="#shop">Collection</a>
+    <a href="#story">Our Story</a>
   </div>
+  <button class="cart" onclick="showCart()">BAG (<span id="cartCount">0</span>)</button>
 </nav>
 
-<main>
-  <section class="scene active" id="mountain">
-    <div class="scene-bg"></div>
-    <div class="scene-content">
-      <p class="eyebrow">A different perspective</p>
-      <h1>Beyond<br>The Ordinary.</h1>
-      <p class="description">A world of possibilities, shaped by vision, driven by purpose, and inspired by the extraordinary.</p>
-      <a href="#clouds" class="cta">Discover more <span>↗</span></a>
-    </div>
-    <div class="side-label">01 — THE BEGINNING</div>
-    <div class="scroll-note">Scroll to explore</div>
-    <div class="scene-number">01 / 04</div>
-  </section>
+<section class="hero" id="home">
+  <div class="sky"></div>
+  <div class="hero-content">
+    <p class="eyebrow">The new era of streetwear</p>
+    <h1>Above<br>the <em>ordinary.</em></h1>
+    <p class="hero-desc">For those who move differently. Discover elevated essentials designed to take your everyday style to another level.</p>
+    <a href="#shop" class="primary-btn">Explore collection <span>↗</span></a>
+  </div>
+  <div class="hero-tag">NOIR — NEW SEASON</div>
+  <div class="hero-scroll">SCROLL TO DISCOVER</div>
+  <div class="hero-count">01 — 04</div>
+</section>
 
-  <section class="scene" id="clouds">
-    <div class="scene-bg"></div>
-    <div class="scene-content">
-      <p class="eyebrow">See beyond the horizon</p>
-      <h2>Find your<br>own direction.</h2>
-      <p class="description">The best journeys begin with a new point of view. Look closer, think bigger, and discover what lies beyond.</p>
-      <a href="#ocean" class="cta">Keep exploring <span>↗</span></a>
-    </div>
-    <div class="side-label">02 — PERSPECTIVE</div>
-    <div class="scroll-note">Keep moving</div>
-    <div class="scene-number">02 / 04</div>
-  </section>
+<div class="ticker"><div class="ticker-track">
+  <span>BUILT DIFFERENT ✳ MADE TO STAND OUT ✳ ABOVE THE ORDINARY ✳</span>
+  <span>BUILT DIFFERENT ✳ MADE TO STAND OUT ✳ ABOVE THE ORDINARY ✳</span>
+</div></div>
 
-  <div class="marquee">
-    <div class="marquee-track">
-      <span>VISION <i>✳</i> DISCOVERY <i>✳</i> POSSIBILITY <i>✳</i> BEYOND LIMITS <i>✳</i></span>
-      <span>VISION <i>✳</i> DISCOVERY <i>✳</i> POSSIBILITY <i>✳</i> BEYOND LIMITS <i>✳</i></span>
-    </div>
+<section class="intro">
+  <div class="cloud-decor cloud-left"></div><div class="cloud-decor cloud-right"></div>
+  <p class="section-label">Not just another label</p>
+  <h2>Wear your<br><em>own direction.</em></h2>
+  <p>Minimal design. Maximum presence. NOIR is made for people who write their own rules and never follow the crowd.</p>
+</section>
+
+<section class="shop" id="shop">
+  <div class="section-heading">
+    <div><p class="section-label">01 / The collection</p><h2>Cloud nine.<br><em>Grounded style.</em></h2></div>
+    <p>EVERYDAY ESSENTIALS.<br>UNCOMMON ENERGY.</p>
   </div>
 
-  <section class="scene" id="ocean">
-    <div class="scene-bg"></div>
-    <div class="scene-content">
-      <p class="eyebrow">Embrace the unknown</p>
-      <h2>There is more<br>out there.</h2>
-      <p class="description">Great things happen when you step beyond the familiar. Make room for new ideas, new places, and new possibilities.</p>
-      <a href="#forest" class="cta">Our philosophy <span>↗</span></a>
-    </div>
-    <div class="side-label">03 — THE JOURNEY</div>
-    <div class="scroll-note">Go deeper</div>
-    <div class="scene-number">03 / 04</div>
-  </section>
+  <div class="products">
+    <article class="product">
+      <div class="product-image">
+        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=85" alt="Essential white T-shirt" loading="lazy">
+        <span class="product-tag">Bestseller</span>
+        <button class="add-btn" onclick="addToBag('Essential White Tee',450)">Add to bag +</button>
+      </div>
+      <div class="product-info"><div><div class="product-name">ESSENTIAL WHITE TEE</div><div class="product-type">Oversized / Cotton</div></div><div class="price">450 EGP</div></div>
+    </article>
 
-  <section class="scene" id="forest">
-    <div class="scene-bg"></div>
-    <div class="scene-content">
-      <p class="eyebrow">A vision for tomorrow</p>
-      <h2>Built for<br>what comes next.</h2>
-      <p class="description">Every new chapter begins with a decision to move forward. This is where imagination meets ambition.</p>
-      <a href="#contact" class="cta">Start a conversation <span>↗</span></a>
-    </div>
-    <div class="side-label">04 — WHAT'S NEXT</div>
-    <div class="scene-number">04 / 04</div>
-  </section>
-</main>
+    <article class="product">
+      <div class="product-image">
+        <img src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=900&q=85" alt="Black streetwear T-shirt" loading="lazy">
+        <span class="product-tag">Essential</span>
+        <button class="add-btn" onclick="addToBag('Noir Black Tee',450)">Add to bag +</button>
+      </div>
+      <div class="product-info"><div><div class="product-name">NOIR BLACK TEE</div><div class="product-type">Relaxed / Everyday</div></div><div class="price">450 EGP</div></div>
+    </article>
 
-<footer id="contact">
-  <p class="eyebrow">Every journey starts somewhere</p>
-  <div class="footer-title">What's your next move?</div>
-  <p>THINK DIFFERENTLY. MOVE PURPOSEFULLY.</p>
-  <div class="footer-bottom">
-    <span>© 2026 MONTFORT</span>
-    <span>DESIGNED TO INSPIRE</span>
-    <a href="#mountain">BACK TO TOP ↑</a>
+    <article class="product">
+      <div class="product-image">
+        <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=900&q=85" alt="Streetwear hoodie" loading="lazy">
+        <span class="product-tag">New season</span>
+        <button class="add-btn" onclick="addToBag('Cloud Nine Hoodie',850)">Add to bag +</button>
+      </div>
+      <div class="product-info"><div><div class="product-name">CLOUD NINE HOODIE</div><div class="product-type">Heavyweight / Premium</div></div><div class="price">850 EGP</div></div>
+    </article>
+
+    <article class="product">
+      <div class="product-image">
+        <img src="https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=900&q=85" alt="Minimal fashion outfit" loading="lazy">
+        <span class="product-tag">Limited</span>
+        <button class="add-btn" onclick="addToBag('Signature Street Tee',500)">Add to bag +</button>
+      </div>
+      <div class="product-info"><div><div class="product-name">SIGNATURE STREET TEE</div><div class="product-type">Graphic / Limited</div></div><div class="price">500 EGP</div></div>
+    </article>
+
+    <article class="product">
+      <div class="product-image">
+        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=85" alt="Contemporary street fashion" loading="lazy">
+        <span class="product-tag">Editorial</span>
+        <button class="add-btn" onclick="addToBag('Everyday Fit',750)">Add to bag +</button>
+      </div>
+      <div class="product-info"><div><div class="product-name">EVERYDAY FIT</div><div class="product-type">Modern / Essential</div></div><div class="price">750 EGP</div></div>
+    </article>
+
+    <article class="product">
+      <div class="product-image">
+        <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=900&q=85" alt="Streetwear fashion collection" loading="lazy">
+        <span class="product-tag">Selected</span>
+        <button class="add-btn" onclick="addToBag('Noir Outerwear',1100)">Add to bag +</button>
+      </div>
+      <div class="product-info"><div><div class="product-name">NOIR OUTERWEAR</div><div class="product-type">Layered / Street</div></div><div class="price">1,100 EGP</div></div>
+    </article>
   </div>
+  <p class="shop-note">LESS NOISE. MORE PRESENCE. — NOIR</p>
+</section>
+
+<section class="story" id="story">
+  <div class="story-image">
+    <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1300&q=90" alt="NOIR fashion editorial" loading="lazy">
+  </div>
+  <div class="story-copy">
+    <p class="section-label">02 / The NOIR mindset</p>
+    <h2>Not made to<br>blend <em>in.</em></h2>
+    <p>We believe style is more than what you wear. It's the way you move, the choices you make, and the confidence you bring into every room.</p>
+    <a href="#shop" class="primary-btn">Find your fit <span>↗</span></a>
+  </div>
+</section>
+
+<section class="final">
+  <div class="final-bg"></div>
+  <div class="final-content">
+    <p class="section-label">Your next chapter starts here</p>
+    <h2>Rise above.</h2>
+    <p>Find your essentials. Define your own direction.</p>
+    <a href="#shop" class="primary-btn">Shop NOIR <span>↗</span></a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top"><div class="footer-logo">NOIR</div><p>ABOVE THE ORDINARY.</p></div>
+  <div class="footer-bottom"><span>© 2026 NOIR STUDIO</span><span>MADE FOR YOUR OWN DIRECTION</span><a href="#home">BACK TO TOP ↑</a></div>
 </footer>
 
+<div class="cart-toast" id="toast">Added to bag ✓</div>
+
 <script>
-const scenes = document.querySelectorAll('.scene');
+let bag=[];
+let toastTimer;
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('active');
-    } else {
-      entry.target.classList.remove('active');
+function addToBag(name,price){
+  bag.push({name,price});
+  document.getElementById('cartCount').textContent=bag.length;
+  const toast=document.getElementById('toast');
+  toast.textContent=name+' — added to bag ✓';
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>toast.classList.remove('show'),2200);
+}
+
+function showCart(){
+  if(!bag.length){
+    alert('Your bag is empty. Explore the collection first.');
+    return;
+  }
+  const total=bag.reduce((sum,item)=>sum+item.price,0);
+  const items=bag.map((item,i)=>(i+1)+'. '+item.name+' — '+item.price+' EGP').join('\n');
+  const checkout=confirm('YOUR NOIR BAG\n\n'+items+'\n\nTotal: '+total+' EGP\n\nPress OK to prepare a WhatsApp order.');
+  if(checkout){
+    const message='Hello NOIR! I want to order:\n'+items+'\nTotal: '+total+' EGP';
+    // Replace 201000000000 with your WhatsApp number including country code.
+    const phone='201000000000';
+    window.open('https://wa.me/'+phone+'?text='+encodeURIComponent(message),'_blank');
+  }
+}
+
+const revealObserver=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      const siblings=[...entry.target.parentElement.children];
+      entry.target.style.transitionDelay=(siblings.indexOf(entry.target)%3)*120+'ms';
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.35 });
+},{threshold:.12});
 
-scenes.forEach(scene => observer.observe(scene));
+document.querySelectorAll('.product').forEach(el=>revealObserver.observe(el));
 
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-  link.addEventListener('click', event => {
-    const target = document.querySelector(link.getAttribute('href'));
-    if (target) {
-      event.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
-  });
+const hero=document.querySelector('.hero');
+const sky=document.querySelector('.sky');
+hero.addEventListener('mousemove',e=>{
+  if(innerWidth<760)return;
+  const x=(e.clientX/innerWidth-.5)*13;
+  const y=(e.clientY/innerHeight-.5)*13;
+  sky.style.transform=`scale(1.12) translate(${x}px,${y}px)`;
 });
+hero.addEventListener('mouseleave',()=>sky.style.transform='');
 
-document.addEventListener('mousemove', event => {
-  if (window.innerWidth < 700) return;
-  const x = (event.clientX / window.innerWidth - 0.5) * 8;
-  const y = (event.clientY / window.innerHeight - 0.5) * 8;
-  document.querySelectorAll('.scene.active .scene-bg').forEach(bg => {
-    bg.style.backgroundPosition = `calc(50% + ${x}px) calc(50% + ${y}px)`;
-  });
-});
+const storyImg=document.querySelector('.story-image img');
+window.addEventListener('scroll',()=>{
+  const rect=document.querySelector('.story-image').getBoundingClientRect();
+  if(rect.top<innerHeight&&rect.bottom>0){
+    storyImg.style.transform=`translateY(${(rect.top-innerHeight)*-.035}px)`;
+  }
+},{passive:true});
 </script>
 </body>
 </html>
